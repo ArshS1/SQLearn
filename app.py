@@ -3,6 +3,9 @@ import streamlit as st
 import pandas as pd
 
 # database management
+import sqlite3
+connection = sqlite3.connect("data/data.sqlite")
+cursor = connection.cursor()
 
 def main():
     # setup main page
@@ -21,7 +24,7 @@ def main():
                 rawFormat = st.text_area("Enter SQL Command")
                 runCommand = st.form("Execute")
 
-        # Results
+        # Results of the command
         with columnTwo:
             if runCommand:
                 st.info("Query Executed")
